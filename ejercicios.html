@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios</title>
+  </head>
+  <body>
+    <h1>Curso JS Ejercicios - corren en consola</h1>
+    <script>
+      /*1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") 
+            devolverá 10.
+        function contarCaracteres(cadena=""){
+            if(!cadena){
+                console.warn("no ingresaste ninguna cadena");
+            }else{
+                console.log(`La cadena "${cadena}" tiene ${cadena.length} caracteres`);
+
+            }
+        } */
+
+      const contarCaracteres = (cadena = "") =>
+        !cadena
+          ? console.warn("no ingresaste ninguna cadena")
+          : console.log(
+              `La cadena "${cadena}" tiene ${cadena.length} caracteres`
+            );
+
+      //contarCaracteres();
+      //contarCaracteres("hola mundo");
+      //contarCaracteres("Anita lava la tina");
+
+      /*2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, 
+            pe. miFuncion("Hola Mundo", 4) devolverá "Hola".*/
+
+      const recortarTexto = (cadena = "", longitud = undefined) =>
+        !cadena
+          ? console.warn("no ingresaste ninguna cadena")
+          : longitud === undefined
+          ? console.warn("no ingresaste ninguna longitud a recortar")
+          : console.info(cadena.slice(0, longitud));
+
+      //recortarTexto("hola mundo",4);
+      //recortarTexto();
+      //recortarTexto("hola mundo");
+      //recortarTexto("",5);
+
+      /*3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, 
+        pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].*/
+
+      const cadenaAAreglo = (cadena = "", separador = undefined) =>
+        !cadena
+          ? console.warn("no ingresaste ninguna cadena de texto!")
+          : separador === undefined
+          ? console.warn("no ingresaste el separador!")
+          : console.info(cadena.split(separador));
+
+      //cadenaAAreglo("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas Letraset, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.", " ");
+      //cadenaAAreglo("Ene,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Oct,Nov,Dic",",");
+      //cadenaAAreglo();
+      //cadenaAAreglo("hola mundo");
+      //cadenaAAreglo("","");
+
+      /*4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo 
+        Hola Mundo Hola Mundo.*/
+
+      const repetirTexto = (texto = "", veces = undefined) => {
+        if (!texto) return console.warn("No ingresanste un texto!");
+        if (veces === undefined)
+          return console.warn(
+            "No ingresanste el numero de veces a repetir el texto!"
+          );
+        if (veces === 0)
+          return console.error("El numero de veces No puede ser cero");
+        if (Math.sign(veces) === -1)
+          return console.error("El numero de veces No puede ser negativo");
+        for (let i = 1; i <= veces; i++) console.info(`${texto},${i}`);
+      };
+
+      //repetirTexto("hola mundo",3);
+      //repetirTexto("hola mundo",0);
+      //repetirTexto("hola mundo",-20);
+      //repetirTexto("",20);
+      //repetirTexto("hola mundo");
+
+      /*5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") 
+        devolverá "odnuM aloH".*/
+
+      const invertirCAdena = (cadena = "") =>
+        !cadena
+          ? console.warn("No ingresaste una cadena de texto!")
+          : console.info(cadena.split("").reverse().join(""));
+
+      //invertirCAdena();
+      //invertirCAdena("hola Mundo");
+      //invertirCAdena("JavaScript es un lenguaje de Programacion increible");
+      //invertirCAdena("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas Letraset, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.");
+
+      /*6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, 
+        pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.*/
+
+      const textoEnCadena = (cadena = "", texto = "") => {
+        if (!cadena) return console.warn("No ingresaste el texto largo");
+        if (!texto) return console.warn("No ingresaste la palabra a evaluar");
+        let i = 0,
+          contador = 0;
+        while (i !== -1) {
+          i = cadena.indexOf(texto, i);
+          if (i !== -1) {
+            i++;
+            contador++;
+          }
+        }
+        return console.info(`La palabra ${texto} se repite ${contador} veces`);
+      };
+
+      //textoEnCadena();
+      //textoEnCadena("","mundo");
+      //textoEnCadena("hola mundo adios mundo");
+      //textoEnCadena("hola mundo adios mundo yolo mundo","mundo");
+
+      /*7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido 
+        que en otro), pe. mifuncion("Salas") devolverá true.*/
+
+      const palindromo = (palabra = "") => {
+        if (!palabra) return console.warn("no ingresaste la palarba o frase!");
+        palabra = palabra.toLowerCase();
+        let alReves = palabra.split("").reverse().join("");
+        return palabra === alReves
+          ? console.info(
+              `Si es palindromo, la palabra original ${palabra}, pasada al reves es ${alReves}`
+            )
+          : console.info(
+              `NO es palindromo, la palabra original ${palabra}, pasada al reves es ${alReves}`
+            );
+      };
+
+      //palindromo();
+      //palindromo("Hola Mundo");
+      //palindromo("anita lava la tina");
+
+      /*8) Programa una función que elimine cierto patrón de caracteres de un texto dado, 
+        pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.*/
+
+      const eliminarCaracteres = (texto = "", patron = "") =>
+        !texto
+          ? console.warn("No ingresaste un texto!")
+          : !patron
+          ? console.warn("No ingresaste un patron!")
+          : console.info(texto.replace(new RegExp(patron, "ig"), ""));
+
+      //eliminarCaracteres();
+      //eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5");
+      //eliminarCaracteres("xyz1, xyz2, xyz3, xyz4 y xyz5","xyz");
+      //eliminarCaracteres("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas Letraset, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.","[a-z]");
+
+      /*9) Programa una función que obtenga un numero aleatorio entre 501 y 600.*/
+
+      const aleatorio = () =>
+        console.info(Math.round(Math.random() * 100) + 500);
+
+      //aleatorio();
+
+      /*10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro),
+        pe. miFuncion(2002) devolverá true.*/
+
+      const capicua = (num = 0) => {
+        if (!num) return console.warn("No ingresaste un numero");
+        if (typeof num !== "number")
+          return console.error(`el valor "${num}" ingresado, no es un numero `);
+        num = num.toString();
+        let alReves = num.split("").reverse().join("");
+        return num === alReves
+          ? console.info(
+              `Si es capicua, numero original ${num} numero al reves ${alReves}`
+            )
+          : console.info(
+              `NO es capicua, numero original ${num} numero al reves ${alReves}`
+            );
+      };
+
+      //capicua();
+      //capicua("19");
+      //capicua({});
+      //capicua(2000);
+      //capicua(2112);
+      //capicua(2002);
+      //capicua(18.99);
+      //capicua(212.212);
+
+      /*11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como
+        el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.*/
+      const factorial = (num = undefined) => {
+        if (num === undefined) return console.warn("No ingresaste un numero");
+        if (typeof num !== "number")
+          return console.error(`El valor ${num} ingresado no es un numero`);
+        if (num === 0) return console.error("Numero no puede ser cero 0");
+        if (Math.sign(num) === -1)
+          return console.error("Numero no puede ser negativo");
+        let factorial = 1;
+        for (let i = num; i > 1; i--) {
+          factorial *= i;
+        }
+        return console.info(`El factorial de ${num} es ${factorial}`);
+      };
+
+      //factorial();
+      //factorial("5");
+      //factorial([1,2,3]);
+      //factorial(0);
+      //factorial(-5);
+      //factorial(5);
+      //factorial(8);
+
+      /*12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) 
+        o no, pe. miFuncion(7) devolverá true.*/
+
+      const numeroPrimo = (num = undefined) => {
+        if (num === undefined) return console.warn("No ingresaste un numero");
+        if (typeof num !== "number")
+          return console.error(`El valor ${num} ingresado no es un numero`);
+        if (num === 0) return console.error("Numero no puede ser cero 0");
+        if (num === 1) return console.error("Numero no puede ser Uno 1");
+        if (Math.sign(num) === -1)
+          return console.error("Numero no puede ser negativo");
+        let divisible = false;
+        for (let i = 2; i < num; i++) {
+          if (num % i === 0) {
+            divisible = true;
+            break;
+          }
+        }
+        return divisible
+          ? console.log(`El numero ${num} NO es Primo`)
+          : console.log(`El numero ${num} si es Primo`);
+      };
+
+      //numeroPrimo();
+      //numeroPrimo("320");
+      //numeroPrimo(true);
+      //numeroPrimo(0);
+      //numeroPrimo(1);
+      //numeroPrimo(-13);
+      //numeroPrimo(13);
+      //numeroPrimo(200);
+
+      /*13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.*/
+
+      const numeroParImpar = (num = undefined) => {
+        if (num === undefined) return console.warn("No ingresaste un numero");
+        if (typeof num !== "number")
+          return console.error(`El valor ${num} ingresado no es un numero`);
+        return num % 2 === 0
+          ? console.info(`El numero ${num} es Par`)
+          : console.info(`El numero ${num} es Impar`);
+      };
+
+      //numeroParImpar();
+      //numeroParImpar("23");
+      //numeroParImpar(-398);
+      //numeroParImpar(19);
+
+      /*14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") 
+        devolverá 32°F.*/
+
+      const convertirGrados = (grados = undefined, unidad = undefined) => {
+        if (grados === undefined)
+          return console.warn("No ingresaste un numero");
+        if (typeof grados !== "number")
+          return console.error(`El valor ${grados} ingresado no es un numero`);
+        if (unidad === undefined)
+          return console.warn("No ingresaste el tipo de grado a convertir");
+        if (typeof unidad !== "string")
+          return console.error(
+            `El valor ${unidad} ingresado, NO es una cadena de texto`
+          );
+        if (unidad.length !== 1 || !/(C|F)/.test(unidad))
+          return console.warn("Valor de unidad no Reconocido");
+        if (unidad === "C") {
+          return console.info(
+            `${grados}ºC = ${Math.round(grados * (9 / 5) + 32)}ºF`
+          );
+        } else if (unidad === "F") {
+          return console.info(
+            `${grados}ºF = ${Math.round((grados - 32) * (5 / 9))}ºC`
+          );
+        }
+      };
+
+      //convertirGrados();
+      //convertirGrados("2");
+      //convertirGrados(2);
+      //convertirGrados(2,true);
+      //convertirGrados(2,"hola");
+      //convertirGrados(0,"E");
+      //convertirGrados(0,"C");
+      //convertirGrados(100,"C");
+      //convertirGrados(32,"F");
+      //convertirGrados(100,"F");
+
+      /*15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) 
+        devolverá 4 base 10.*/
+
+      const convertirBinarioDecimal = (num = undefined, base = undefined) => {
+        if (num === undefined)
+          return console.warn("No ingresaste un numero a convertir");
+        if (typeof num !== "number")
+          return console.error(`El valor ${num} ingresado no es un numero`);
+        if (base === undefined)
+          return console.warn("No ingresaste la base a convertir");
+        if (typeof base !== "number")
+          return console.error(`El valor ${base} ingresado, NO es un numero`);
+        if (base === 2) {
+          return console.info(
+            `El numero ${num} base ${base} = ${parseInt(num, base)} base 10`
+          );
+        } else if (base === 10) {
+          return console.info(
+            `El numero ${num} base ${base} = ${num.toString(2)} base 2`
+          );
+        } else {
+          return console.warn("el tipo de base a convertir no es valida");
+        }
+      };
+
+      //convertirBinarioDecimal();
+      //convertirBinarioDecimal("2");
+      //convertirBinarioDecimal(100);
+      //convertirBinarioDecimal(100,"2");
+      //convertirBinarioDecimal(100,2);
+      //convertirBinarioDecimal(101,2);
+      //convertirBinarioDecimal(1110010,2);
+      //convertirBinarioDecimal(4, 10);
+      //convertirBinarioDecimal(114,10);
+      //convertirBinarioDecimal(114,3);
+
+      /*16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, 
+        pe. miFuncion(1000, 20) devolverá 800.*/
+
+      const aplicarDEscuento = (monto = undefined, descto = 0) => {
+        if (monto === undefined) return console.warn("no ingresaste el monto");
+        if (typeof monto !== "number")
+          return console.error(`El valor ${monto} ingresado no es un numero`);
+        if (monto === 0) return console.warn("El monto no puede ser cero");
+        if (Math.sign(monto) === -1)
+          return console.error("El monto no puede ser negativo");
+        if (typeof descto !== "number")
+          return console.error(`El valor ${descto} ingresado, NO es un numero`);
+        if (Math.sign(descto) === -1)
+          return console.error("El descuento no puede ser negativo");
+        return console.info(
+          `$${monto} - ${descto}% = $${monto - (monto * descto) / 100}`
+        );
+      };
+
+      //aplicarDEscuento();
+      //aplicarDEscuento("100");
+      //aplicarDEscuento(0);
+      //aplicarDEscuento(-1000);
+      //aplicarDEscuento(1000,"20");
+      //aplicarDEscuento(1000,-20);
+      //aplicarDEscuento(1000);
+      //aplicarDEscuento(1000,25);
+
+      /*17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, 
+        pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).*/
+
+      const calcularAnios = (fecha = undefined) => {
+        if (fecha === undefined)
+          return console.warn("no ingresaste ninguna fecha");
+        if (!(fecha instanceof Date))
+          return console.error(
+            `El valor ${fecha} ingresado no es una fecha valida`
+          );
+        let hoyMenosFecha = new Date().getTime() - fecha.getTime(),
+          aniosEnMS = 1000 * 60 * 60 * 24 * 365,
+          aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMS);
+        return Math.sign(aniosHumanos) === -1
+          ? console.info(
+              `Faltan ${Math.abs(
+                aniosHumanos
+              )} años para el ${fecha.getFullYear()}.`
+            )
+          : Math.sign(aniosHumanos) === 1
+          ? console.info(
+              `Han pasado ${aniosHumanos} años desde el ${fecha.getFullYear()}.`
+            )
+          : console.info(`Estamos en el año actual ${fecha.getFullYear()}.`);
+      };
+
+      //calcularAnios();
+      //calcularAnios({});
+      //calcularAnios(true);
+      //calcularAnios(new Date);
+      //calcularAnios(new Date(1984,04,23));
+      //calcularAnios(new Date(1884,04,23));
+      //calcularAnios(new Date(2084,04,23));
+      //calcularAnios(new Date(1977,06,28));
+
+      /*18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, 
+        pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.*/
+
+      const contarLetras = (cadena = undefined) => {
+        if (cadena === undefined)
+          return console.warn("no ingresaste una cadena de texto");
+        if (typeof cadena !== "string")
+          return console.error(
+            `El valor ${cadena} ingresado no es una cadena de texto`
+          );
+        let vocales = 0,
+          consonantes = 0;
+        cadena = cadena.toLocaleLowerCase();
+        for (let letra of cadena) {
+          if (/[aeiouáéíóúü]/.test(letra)) vocales++;
+          if (/[bcdfghjklmnpqrñstvwxyz]/.test(letra)) consonantes++;
+        }
+        return console.info({
+          cadena,
+          vocales,
+          consonantes,
+        });
+      };
+
+      //contarLetras();
+      //contarLetras(1100);
+      //contarLetras(true);
+      //contarLetras("hola mundo");
+      //contarLetras("ñoño");
+      //contarLetras("Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo Contenido aquí, contenido aquí. Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de Lorem Ipsum va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito por ejemplo insertándole humor y cosas por el estilo.");
+
+      /*19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") 
+        devolverá verdadero.*/
+
+      const validarNombre = (nombre = "") => {
+        if (nombre === undefined)
+          return console.warn("no ingresaste una Nombre");
+        if (typeof nombre !== "string")
+          return console.error(
+            `El valor ${nombre} ingresado no es una cadena de texto`
+          );
+        let expReg = /^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/g.test(nombre);
+        return expReg
+          ? console.info(`"${nombre}", es un nombre valido`)
+          : console.warn(`"${nombre}", No es un nombre valido`);
+      };
+
+      //validarNombre();
+      //validarNombre(true);
+      //validarNombre(123);
+      //validarNombre("Rodrigo garcia");
+
+      /*20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") 
+        devolverá verdadero.*/
+
+      const validarcorreo = (correo = "") => {
+        if (correo === undefined)
+          return console.warn("no ingresaste una Nombre");
+        if (typeof correo !== "string")
+          return console.error(
+            `El valor ${correo} ingresado no es una cadena de texto`
+          );
+        let expReg =
+          /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+            correo
+          );
+        return expReg
+          ? console.info(`"${correo}", es un correo valido`)
+          : console.warn(`"${correo}", No es un correo valido`);
+      };
+
+      //validarcorreo();
+      //validarcorreo(34);
+      //validarcorreo("rogab,01@gmail");
+      //validarcorreo("roga01@gmail.com");
+
+      /*Fusion ejercio 19 y 20*/
+
+      const validaPatron = (cadena = "", patron = undefined) => {
+        if (!cadena)
+          return console.warn("no ingresaste una cadena de texto evaluar");
+        if (typeof cadena !== "string")
+          return console.error(
+            `El valor ${cadena} ingresado no es una cadena de texto`
+          );
+        if (patron === undefined)
+          return console.warn("no ingresaste un patron a evaluar");
+        if (!(patron instanceof RegExp))
+          return console.error(
+            `El valor ${patron} ingresado no es unaexpresion regular`
+          );
+        let expReg = patron.test(cadena);
+        return expReg
+          ? console.info(`"${cadena}", cumple con el patron ingresado`)
+          : console.warn(`"${cadena}", No cumple con el patron ignresado`);
+      };
+
+      //validaPatron();
+      //validaPatron([]);
+      //validaPatron("Hola Mundo");
+      //validaPatron("Hola Mundo","hola");
+      //validaPatron("rodrigo",[1,2,3]);
+      //validaPatron("Rodrigo Garcia",/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/g);
+      //validaPatron("Rodrigo Garcia 19",/^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\s]+$/g);
+      //validaPatron("rogab01@gmail",new RegExp("/[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/","i"));
+      //validaPatron("rogab01@gmail.com",new RegExp("[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})","i"));
+
+      /*21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado,
+        pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].*/
+
+      const devolverCuadrados = (arr = undefined) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+        if (!(arr instanceof Array))
+          return console.error("El valor ingresado no es un arreglo");
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, No es un numero`
+            );
+        }
+        const newArr = arr.map((el) => el * el);
+        return console.info(
+          `Arreglo original: ${arr}, \n elevado al cuadrado: ${newArr}`
+        );
+      };
+
+      //devolverCuadrados();
+      //devolverCuadrados(true);
+      //devolverCuadrados({});
+      //devolverCuadrados([]);
+      //devolverCuadrados([1,2,"3"]);
+      //devolverCuadrados([1,2,{}]);
+      //devolverCuadrados([1,2,3,4]);
+
+      /*22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe.
+        miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].*/
+
+      const arraMinMax = (arr = undefined) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+        if (!(arr instanceof Array))
+          return console.error("El valor ingresado no es un arreglo");
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, No es un numero`
+            );
+        }
+        return console.info(
+          `Arreglo original: ${arr} \nValor mayor: ${Math.max(
+            ...arr
+          )},\nValor menor ${Math.min(...arr)}`
+        );
+      };
+
+      //arraMinMax();
+      //arraMinMax(false);
+      //arraMinMax([]);
+      //arraMinMax([1,2,false]);
+      //arraMinMax([1,4,5,99,-60]);
+
+      /*23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los 
+        números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], 
+        impares: [1,3,5,7,9]}.*/
+
+      const separarParesImpares = (arr = undefined) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+        if (!(arr instanceof Array))
+          return console.error("El valor ingresado no es un arreglo");
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, No es un numero`
+            );
+        }
+        return console.info({
+          pares: arr.filter((num) => num % 2 === 0),
+          impares: arr.filter((num) => num % 2 === 1),
+        });
+      };
+      //separarParesImpares();
+      //separarParesImpares("hola");
+      //separarParesImpares([2,4,"j"]);
+      //separarParesImpares([1,2,3,4,5,6,7,8,9,0]);
+
+      /*24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los 
+        numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) 
+        devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.*/
+
+      const ordenarArreglo = (arr = undefined) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+        if (!(arr instanceof Array))
+          return console.error("El valor ingresado no es un arreglo");
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, No es un numero`
+            );
+        }
+        return console.info({
+          arr,
+          asc: arr.map((el) => el).sort(),
+          desc: arr
+            .map((el) => el)
+            .sort()
+            .reverse(),
+        });
+      };
+
+      //ordenarArreglo();
+      //ordenarArreglo("hola");
+      //ordenarArreglo([]);
+      //ordenarArreglo([3,2,{}]);
+      //ordenarArreglo([7,5,7,8,6]);
+
+      /*25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. 
+        miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].*/
+
+      const quitarDuplicados = (arr = undefined) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+        if (!(arr instanceof Array))
+          return console.error("El valor ingresado no es un arreglo");
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+        if (arr.length === 1)
+          return console.error("El arreglo debe tener mas de un elemento");
+        return console.info({
+          original: arr,
+          // sinDuplicados:arr.filter((value,index,self)=>self.indexOf(value)===index)
+          sinDuplicados: [new Set(arr)],
+        });
+      };
+
+      //quitarDuplicados()
+      //quitarDuplicados({})
+      //quitarDuplicados([])
+      //quitarDuplicados([2])
+      //quitarDuplicados(["x", 10, "x", 2, "10", 10, true, true])
+
+      /*26) Programa una función que dado un arreglo de números obtenga el promedio, pe. 
+        promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.*/
+
+      const promedio = (arr = undefined) => {
+        if (arr === undefined)
+          return console.warn("No ingresaste un arreglo de numeros");
+        if (!(arr instanceof Array))
+          return console.error("El valor ingresado no es un arreglo");
+        if (arr.length === 0) return console.error("El arreglo esta vacio");
+        for (let num of arr) {
+          if (typeof num !== "number")
+            return console.error(
+              `El valor "${num}" ingresado, no es un numero valido`
+            );
+        }
+        return console.info(
+          arr.reduce((total, num, index, arr) => {
+            total += num;
+            if (index === arr.length - 1) {
+              return `El primedio del ${arr.join(" + ")} es = ${
+                total / arr.length
+              }`;
+            } else {
+              return total;
+            }
+          })
+        );
+      };
+
+      //promedio()
+      //promedio({})
+      //promedio([])
+      //promedio(2,true)
+      //promedio([9,8,7,6,5,4,3,2,1,0])
+
+      /*27) Programa una clase llamada Pelicula.
+
+La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, 
+año de estreno, país o países de origen, géneros y calificación en IMBD.
+
+  - Todos los datos del objeto son obligatorios.
+  - Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 
+     7 restantes números.
+  - Valida que el título no rebase los 100 caracteres.
+  - Valida que el director no rebase los 50 caracteres.
+  - Valida que el año de estreno sea un número entero de 4 dígitos.
+  - Valida que el país o paises sea introducidos en forma de arreglo.
+  - Valida que los géneros sean introducidos en forma de arreglo.
+  - Valida que los géneros introducidos esten dentro de los géneros 
+     aceptados*.
+  - Crea un método estático que devuelva los géneros aceptados*.
+  - Valida que la calificación sea un número entre 0 y 10 pudiendo ser 
+    decimal de una posición.
+  - Crea un método que devuelva toda la ficha técnica de la película.
+  - Apartir de un arreglo con la información de 3 películas genera 3 
+    instancias de la clase de forma automatizada e imprime la ficha técnica 
+    de cada película.
+
+* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, 
+Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, 
+Thriller, War, Western.*/
+
+      class Pelicula {
+        constructor({
+          id,
+          titulo,
+          director,
+          estreno,
+          pais,
+          generos,
+          calificacion,
+        }) {
+          this.id = id;
+          this.titulo = titulo;
+          this.director = director;
+          this.estreno = estreno;
+          this.pais = pais;
+          this.generos = generos;
+          this.calificacion = calificacion;
+
+          this.validarIMDB(id);
+          this.validarTitulo(titulo);
+          this.validarDirector(director);
+          this.validarEstreno(estreno);
+          this.validarPais(pais);
+          this.validarGeneros(generos);
+          this.validarCalificacion(calificacion);
+        }
+
+        static get listaGeneros() {
+          return [
+            "Action",
+            "Adult",
+            "Adventure",
+            "Animation",
+            "Biography",
+            "Comedy",
+            "Crime",
+            "Documentary",
+            "Drama",
+            "Family",
+            "Fantasy",
+            "Film Noir",
+            "Game-Show",
+            "History",
+            "Horror",
+            "Musical",
+            "Music",
+            "Mystery",
+            "News",
+            "Reality-TV",
+            "Romance",
+            "Sci-Fi",
+            "Short",
+            "Sport",
+            "Talk-Show",
+            "Thriller",
+            "War",
+            "Western",
+          ];
+        }
+
+        static generosAceptados() {
+          return console.info(
+            `Los Generos aceptados son; ${Pelicula.listaGeneros.join(" , ")}`
+          );
+        }
+
+        validarCadena(propiedad, valor) {
+          if (!valor) return console.warn(`${propiedad} "${valor}" esta vacio`);
+          if (typeof valor !== "string")
+            return console.error(
+              `${propiedad} "${valor}" ingresado no es una cadena de texto`
+            );
+          return true;
+        }
+
+        validarLongitudCadena(propiedad, valor, longitud) {
+          if (valor.length > longitud)
+            return console.error(
+              `${propiedad} "${valor} excede el numero de caracteres permitidos (${longitud}).`
+            );
+          return true;
+        }
+
+        validarNumero(propiedad, valor) {
+          if (!valor)
+            return console.warn(`${propiedad}  "${valor}" esta vacio.`);
+          if (typeof valor !== "number")
+            return console.error(
+              `${propiedad}  "${valor}" ingresado, no es un numero valido`
+            );
+          return true;
+        }
+
+        validarArreglo(propiedad, valor) {
+          if (!valor)
+            return console.warn(`${propiedad} "${valor}" esata vacio`);
+
+          if (!(valor instanceof Array))
+            return console.error(
+              `${propiedad} "${valor}" ingresado, no es un arrego`
+            );
+
+          if (valor.length === 0)
+            return console.error(`${propiedad} "${valor}" no tiene datos`);
+
+          for (let cadena of valor) {
+            if (typeof cadena !== "string")
+              return console.error(
+                `el valor ${cadena} ingresado, no es una cadena de texto`
+              );
+          }
+          return true;
+        }
+
+        validarIMDB(id) {
+          if (this.validarCadena("IMDB id", id)) {
+            if (!/^([a-z]){2}([0-9]){7}$/.test(id)) {
+              return console.error(
+                `IMDB id "${id}" no es valido, debe tener 9 caracteres, los 2 primeros letras y los 7 ultimos numeros`
+              );
+            }
+          }
+        }
+
+        validarTitulo(titulo) {
+          if (this.validarCadena("Titulo", titulo))
+            this.validarLongitudCadena("Titulo", titulo, 100);
+        }
+
+        validarDirector(director) {
+          if (this.validarCadena("Director", director))
+            this.validarLongitudCadena("Director", director, 50);
+        }
+
+        validarEstreno(estreno) {
+          if (this.validarNumero("Año de estreno", estreno)) {
+            if (!/^([0-9]){4}$/.test(estreno)) {
+              return console.error(
+                `Ano de estrenno "${estreno}" no es valido, debe ser un numero de 4 digito`
+              );
+            }
+          }
+        }
+
+        validarPais(pais) {
+          this.validarArreglo("Pais", pais);
+        }
+
+        validarGeneros(generos) {
+          if (this.validarArreglo("Géneros", generos)) {
+            for (let genero of generos) {
+              console.info(genero, Pelicula.listaGeneros.includes(genero));
+              if (!Pelicula.listaGeneros.includes(genero)) {
+                console.error(`Genero(s) Incorrectos "${generos.join(" , ")}"`);
+                Pelicula.generosAceptados();
+              }
+            }
+          }
+        }
+
+        validarCalificacion(calificacion) {
+          if (this.validarNumero("Calificacion", calificacion)) {
+            return calificacion < 0 || calificacion > 10
+              ? console.error("Lacaclificaon tiene que estar entre 1 y 10")
+              : (this.calificacion = calificacion.toFixed(1));
+          }
+        }
+
+        fichaTecnica() {
+          console.info(
+            `Ficha Tecnica:\nTitulo:"${this.titulo}"\nDirector:${
+              this.director
+            }\nAño:${this.estreno}\nPais:${this.pais.join(
+              ", "
+            )}\nGeneros:${this.generos.join(", ")}\nCalificacion:${
+              this.calificacion
+            }\nId IDBD:${this.id}`
+          );
+        }
+      }
+
+      //Pelicula.generosAceptados()
+
+      /* const peli=new Pelicula({
+    id:"tt1234567",
+    titulo:"Titulo de la Peli",
+    director:"Director de la Peli",
+    estreno:2020,
+    pais:["mexico"],
+    generos:["Comedy","Sport"],
+    calificacion:7.333
+})
+
+peli.fichaTecnica() */
+
+      const misPelis = [
+        {
+          id: "tt0000001",
+          titulo: "Into the Wild",
+          director: "Sean Penn",
+          estreno: 2007,
+          pais: ["USA"],
+          generos: ["Adventure", "Biography"],
+          calificacion: 8.1,
+        },
+        {
+          id: "tt0000002",
+          titulo: "Rocky Balboa",
+          director: "Silvestre Stalone",
+          estreno: 2008,
+          pais: ["USA"],
+          generos: ["Action", "Drama", "Sport"],
+          calificacion: 7.1,
+        },
+        {
+          id: "tt0000003",
+          titulo: "The DArk Knight",
+          director: "Christopher Nolan",
+          estreno: 2008,
+          pais: ["USA", "UK"],
+          generos: ["Action", "Crime", "Drama"],
+          calificacion: 7.333,
+        },
+      ];
+
+      misPelis.forEach((el) => new Pelicula(el).fichaTecnica());
+    </script>
+  </body>
+</html>
